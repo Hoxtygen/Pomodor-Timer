@@ -23,6 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	};
 
+	reset.onclick = function () {
+		clearInterval(interval);
+	}
+
 	function starTimer () {
 		// body... 
 		tens++;
