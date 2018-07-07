@@ -3,30 +3,30 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Pomodoro Test Calculator</title>
+	<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="test.css">
 </head>
 <body>
 	<div class="wrapper">
-		<div class="container">
-			<h1>FCC Pomodoro Clock</h1>
-			<div class="work">
-				<p>Work</p>
-				<p><span class="reduce">-</span> 5 <span class="add">+</span></p>
-			</div><!-- rest closed -->
-			<div class="rest">
-				<p>Rest</p>
-				<p><span class="reduce">-</span> 5 <span class="add">+</span></p>
-			</div><!-- rest closed -->
-			<div class="timer-container">
-				<p>Session</p>
-				<p id="timer"><span id="minutes">25</span>:<span id="seconds">00</span>:<span id="tens">00</span> </p>
-			</div><!-- timer-container closed -->
-			<div class="control-button">
-				<button type="button" id="start">Start</button>
-				<button type="reset" id="reset">Reset</button>
+		<div class="header">FCC Pomodoro Timer</div>
+		<div class="timer-container">
+			<h4>Time Selector</h4>
+			<div class="set-timer">
+				<p>
+					<span id="minsToggle">25</span> Minutes<br>
+					<span id="more" onclick = "increaseTimer()"><i class="fa fa-plus-square-o"></i></span>
+					<span id="less" onclick= "decreaseTimer()"><i class="fa fa-minus-square-o"></i></span>
+				</p>
 			</div>
-		</div><!-- container closed -->
-	</div><!-- wrapper closed -->
+			<div class="timer">
+				<span id="minSet">25</span>m 
+				<span id="secSet">00</span>s
+			</div>
+			<button onclick="beginTimer()" class="btn start" id="start">Start</button>
+			<button onclick="stopTimer()" class="btn stop" id="stop">Stop</button>
+			<button onclick="resetTimer()" class="btn reset" id="reset">Reset</button>
+		</div>
+	</div>
 
 	<script src="js/app.js"></script>
 </body>
