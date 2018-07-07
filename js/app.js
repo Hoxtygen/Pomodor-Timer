@@ -1,65 +1,48 @@
-document.addEventListener("DOMContentLoaded", function () {
-	var minutes = document.getElementById("minutes").innerHTML;
-	//console.log(minutes);
-	var seconds = document.getElementById("seconds").innerHTML;
-	//console.log(seconds);
-	var tens = document.getElementById("tens").innerHTML;
-	//console.log(tens);
-	var appendMinutes = document.getElementById("minutes");
-	var appendSeconds = document.getElementById("seconds");
-	var appendTens = document.getElementById("tens");
-	var start = document.getElementById("start");
-	var reset = document.getElementById("reset");
-	//var timer = document.getElementById("timer");
-	//timer = timer.innerHTML;
-	//console.log(timer);
-	var interval;
+	let startBtn = document.getElementById("start");
+	let stopBtn = document.getElementById('stop');
+	let resetBtn = document.getElementById('reset');
+	let minSet = document.getElementById('minSet');
+	let secSet = document.getElementById('secSet');
+	let minToggle = document.getElementById("minsToggle");
+	
 
 
-
-	start.onclick = function () {
-		clearInterval(interval);
-		interval = setInterval(starTimer, 10);
-
-	};
-
-	reset.onclick = function () {
-		clearInterval(interval);
+	let beginTimer = function() 	{
+		start = setInterval(countdown, 1000);
 	}
 
-	function starTimer () {
-		// body... 
-		tens++;
-		if (tens < 9) {
-			appendTens.innerHTML = "0" + tens;
+	let stopTimer = function() 	{
+		window.clearInterval(start);
+	}
+
+	let resetTimer = function () {
+		window.clearInterval(start);
+		secSet.innerText = 00;
+		minSet.innerText = minToggle.innerText;
+	}
+
+	let countdown = function() 		{
+		console.log(countdown);
+		if (secSet.innerText <= 0) {
+			secSet.innerText = 60;
+			minSet.innerText-- 
 		}
-
-		if (tens > 9) {
-			appendTens = tens;
+		secSet.innerText--
+		if(secSet.innerText <= 0 && minSet <=0)	{
+			window.clearInterval(start);
 		}
+	}
 
-		if (tens > 99) {
-			seconds++;
-			appendSeconds.innerHTML = "0" + seconds;
-			tens = 0;
-			appendTens.innerHTML = "0" + 0; 
+	let increaseTimer = function()	{
+		minToggle.innerText++;
+		minSet.innerText = minToggle.innerText;
+	}
+
+	let decreaseTimer = function () {
+		minToggle.innerText--;
+		if (minToggle.innerText <= 1) {
+			minToggle.innerText = 1;
+			minSet.innerText = minToggle.innerText;
 		}
-
-		if (seconds > 9) {
-			appendSeconds.innerHTML = seconds;
-		}
-
-		if (seconds > 59) {
-			minutes--;
-			appendMinutes.innerHTML = "0" + minutes;
-			seconds = 0;
-			appendSeconds.innerHTML = "0" + 0;
-		}
-
-		if (minutes > 9) {
-			appendMinutes.innerHTML = minutes;
-		}
-	}//startTimer ends
-});
-
-
+		minSet.innerText = minToggle.innerText;
+	}
