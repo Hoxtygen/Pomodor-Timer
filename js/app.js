@@ -5,14 +5,20 @@
 	let secSet = document.getElementById('secSet');
 	let minToggle = document.getElementById("minsToggle");
 	
+	
 
 
 	let beginTimer = function() 	{
 		start = setInterval(countdown, 1000);
+		startBtn.disabled = true;
+		stopBtn.disabled = false;
 	}
 
 	let stopTimer = function() 	{
 		window.clearInterval(start);
+
+		startBtn.disabled = false;
+		stopBtn.disabled = true;
 	}
 
 	let resetTimer = function () {
@@ -30,6 +36,10 @@
 		secSet.innerText--
 		if(secSet.innerText <= 0 && minSet <=0)	{
 			window.clearInterval(start);
+		}
+
+		if (secSet.innerText < 10) {
+			secSet.innerText = "0" + secSet.innerText;
 		}
 	}
 
